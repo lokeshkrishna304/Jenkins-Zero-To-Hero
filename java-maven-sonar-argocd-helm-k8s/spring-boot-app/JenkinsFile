@@ -11,4 +11,12 @@ pipeline {
        git branch: 'master2', url: 'https://github.com/lokeshkrishna304/E-commerce-project-springBoot.git'
       }
     }
+ stage('Build and Test') {
+  steps {
+    sh '''
+      cd JtProject/java-maven-sonar-argocd-helm-k8s/spring-boot-app
+      mvn clean package
+    '''
+  }
+}
 }}
