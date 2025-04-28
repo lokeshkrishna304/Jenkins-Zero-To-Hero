@@ -5,12 +5,16 @@ pipeline {
       args '--user root -v /var/run/docker.sock:/var/run/docker.sock' // mount Docker socket to access the host's Docker daemon
     }
   }
-  stages {
-    stage('Checkout') {
-      steps {
-       git branch: 'main', url: 'https://github.com/lokeshkrishna304/java-maven-sonar-argocd-helm-k8s'
-      }
-    }
+    stages {
+        stage('Checkout') {
+            steps {
+                // 🔥 ADD this line to avoid Git asking for credentials
+                sh 'git config --global credential.helper ""'
+                
+                // Now do git checkout
+                git url: 'https://github.com/lokeshkrishna304/java-maven-sonar-argocd-helm-k8s', branch: 'master'
+            }
+        }
  stage('Build and Test') {
   steps {
     sh '''
