@@ -8,7 +8,7 @@ pipeline {
   stages {
     stage('Checkout') {
       steps {
-       git branch: 'master2', url: 'https://github.com/lokeshkrishna304/java-maven-sonar-argocd-helm-k8s'
+       git branch: 'main', url: 'https://github.com/lokeshkrishna304/java-maven-sonar-argocd-helm-k8s'
       }
     }
  stage('Build and Test') {
